@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
   Container,
@@ -20,7 +21,7 @@ function InvitationPage() {
   const [isParticipationRecorded, setIsParticipationRecorded] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true); // New state to control button disable
 
-  // const navigate = useNavigate(); // To programmatically navigate to another route
+  const navigate = useNavigate(); // To programmatically navigate to another route
 
   const fadeInStyle = useSpring({
     opacity: 1,
@@ -301,6 +302,50 @@ function HomePage() {
   );
 }
 
+function AccessDenied() {
+  const navigate = useNavigate();
+
+  const handleBackToHome = () => {
+    navigate("/"); // Navigate back to the home page
+  };
+
+  return (
+    <Container
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "100vh",
+        textAlign: "center",
+        backgroundColor: "#f0f8ff",
+      }}
+    >
+      <Typography
+        variant="h3"
+        gutterBottom
+        sx={{ color: "#CD212A", fontWeight: "bold" }}
+      >
+        Access Denied
+      </Typography>
+      <Typography variant="body1" sx={{ color: "#333", marginBottom: "2rem" }}>
+        You do not have permission to view this page.
+      </Typography>
+      <Button
+        variant="contained"
+        onClick={handleBackToHome}
+        sx={{
+          backgroundColor: "#DAA520",
+          color: "#FFF",
+          padding: "0.8rem 2rem",
+        }}
+      >
+        Back to Home
+      </Button>
+    </Container>
+  );
+}
+
 // Main App Component with Routing
 function App() {
   return (
@@ -361,6 +406,8 @@ function App() {
         <Route path="/LOPERA$INVITE8901234569" element={<InvitationPage />} />
         <Route path="/LOPERA$INVITE9012345670" element={<InvitationPage />} />
         <Route path="/LOPERA$INVITE0123456782" element={<InvitationPage />} />
+
+        <Route path="/*" element={<AccessDenied />} />
       </Routes>
     </Router>
   );
