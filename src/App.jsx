@@ -48,7 +48,7 @@ function InvitationPage() {
 
   return (
     <Container
-      maxWidth="md"
+      maxWidth="false"
       sx={{
         display: "flex",
         alignItems: "center",
@@ -65,7 +65,7 @@ function InvitationPage() {
             src={logo}
             alt="Lopera International School Logo"
             style={{
-              maxWidth: { xs: "100px", md: "150px" },
+              maxWidth: { xs: "2000px", md: "2000px" },
               width: "100%",
               marginBottom: "1rem",
             }}
@@ -231,7 +231,7 @@ function InvitationPage() {
 function HomePage() {
   return (
     <Container
-      maxWidth="sm"
+      maxWidth={false} // Removes maxWidth constraint to allow full width
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -239,6 +239,7 @@ function HomePage() {
         justifyContent: "center",
         minHeight: "100vh",
         textAlign: "center",
+        width: "100%", // Takes full width of the screen
         padding: { xs: "1rem", sm: "2rem" },
         position: "relative",
         backgroundColor: "#f0f8ff", // Light blue background
@@ -250,7 +251,7 @@ function HomePage() {
           src={logo}
           alt="Lopera International School Logo"
           style={{
-            maxWidth: "200px",
+            maxWidth: "1080px",
             width: "100%",
           }}
         />
