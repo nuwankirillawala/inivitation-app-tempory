@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useNavigate,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
   Container,
   Typography,
@@ -12,6 +7,9 @@ import {
   Box,
   Card,
   CardContent,
+  List,
+  ListItem,
+  ListItemText,
 } from "@mui/material";
 import { useSpring, animated } from "@react-spring/web";
 import logo from "./assets/logo-b.png"; // Assuming the logo is uploaded here
@@ -229,13 +227,87 @@ function InvitationPage() {
   );
 }
 
+function HomePage() {
+  return (
+    <Container
+      maxWidth="sm"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "100vh",
+        textAlign: "center",
+        padding: { xs: "1rem", sm: "2rem" },
+        position: "relative",
+        backgroundColor: "#f0f8ff", // Light blue background
+      }}
+    >
+      {/* Lopera Logo */}
+      <Box mb={4}>
+        <img
+          src={logo}
+          alt="Lopera International School Logo"
+          style={{
+            maxWidth: "200px",
+            width: "100%",
+          }}
+        />
+      </Box>
+
+      {/* Events List */}
+      <Typography
+        variant="h5"
+        gutterBottom
+        sx={{ fontWeight: "bold", marginBottom: "1rem", color: "#333" }}
+      >
+        Upcoming Events
+      </Typography>
+
+      <List>
+        <ListItem>
+          <ListItemText
+            primary="Graduation Ceremony"
+            secondary="15 September 2024"
+            primaryTypographyProps={{ fontWeight: "bold", color: "#333" }} // Darker font color for the text
+            secondaryTypographyProps={{ color: "#555" }} // Muted color for the dates
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            primary="Opening Day Ceremony"
+            secondary="15 September 2024"
+            primaryTypographyProps={{ fontWeight: "bold", color: "#333" }}
+            secondaryTypographyProps={{ color: "#555" }}
+          />
+        </ListItem>
+        <ListItem>
+          <ListItemText
+            primary="Musical Concert"
+            secondary="15 September 2024"
+            primaryTypographyProps={{ fontWeight: "bold", color: "#333" }}
+            secondaryTypographyProps={{ color: "#555" }}
+          />
+        </ListItem>
+      </List>
+
+      {/* Hashtags at the bottom */}
+      <Box sx={{ position: "absolute", bottom: "20px", textAlign: "center" }}>
+        <Typography variant="body1" sx={{ color: "#333", fontStyle: "italic" }}>
+          #Be_Smart #Be_Happy
+        </Typography>
+      </Box>
+    </Container>
+  );
+}
+
 // Main App Component with Routing
 function App() {
   return (
     <Router>
       <Routes>
         {/* Default route */}
-        <Route path="/" element={<InvitationPage />} />
+        <Route path="/" element={<HomePage />} />
 
         {/* Route to direct verification page */}
         <Route path="/LOPERA$INVITE2345678912" element={<InvitationPage />} />
