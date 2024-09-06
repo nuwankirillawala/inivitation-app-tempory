@@ -310,6 +310,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
 
         {/* Route to direct verification page */}
+        <Route path="/INVITE2345678912" element={<InvitationPage />} />
         <Route path="/LOPERA$INVITE2345678912" element={<InvitationPage />} />
         <Route path="/LOPERA$INVITE3456789123" element={<InvitationPage />} />
         <Route path="/LOPERA$INVITE4567891234" element={<InvitationPage />} />
